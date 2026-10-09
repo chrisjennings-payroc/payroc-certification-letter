@@ -1,0 +1,54 @@
+name: Catalogue drift check
+
+on:
+  schedule:
+    - cron: "0 14 * * 1" # Mondays 14:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare catalogue with the Payroc OpenAPI spec
+        id: check
+        run: |
+          set +e
+          python3 scripts/sync_catalogue.py --check > drift.txt
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+          cat drift.txt
+      - name: Open or update the drift issue
+        if: steps.check.outputs.status != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "The Payroc OpenAPI spec (https://docs.payroc.com/openapi.json) no longer matches \`catalogue.json\`."
+            echo
+            echo '```'
+            cat drift.txt
+            echo '```'
+            echo
+            echo "To fix: run \`python3 scripts/sync_catalogue.py\`, review the diff (map any UNMAPPED tags in \`TAG_MAP\`), and open a PR."
+            echo
+            echo "_Updated by the weekly check on $(date -u +%F)._"
+          } > body.md
+          n=$(gh issue list --label catalogue-drift --state open --json number --jq '.[0].number')
+          if [ -n "$n" ]; then
+            gh issue edit "$n" --body-file body.md
+          else
+            gh label create catalogue-drift --color FBCA04 --description "Endpoint catalogue is out of date" 2>/dev/null || true
+            gh issue create --title "Endpoint catalogue is out of date" --label catalogue-drift --body-file body.md
+          fi
+      - name: Close the drift issue once resolved
+        if: steps.check.outputs.status == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --label catalogue-drift --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Catalogue matches the spec again."
+          done
