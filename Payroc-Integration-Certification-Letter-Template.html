@@ -295,7 +295,7 @@ var VAF = [
  ["Surcharge","RewardPay"],["Dual Pricing","Consumer Choice"],["Service Fee","Percent or amount"],["Enhanced Data","Level II and/or Level III"],
  ["Dynamic Descriptor",""],["Custom Fields",""],["Taxes","Gateway managed"],["Tips","Gateway prompt, or API / SDK driven"]
 ];
-var PM = ["Credit Card","US PIN Debit","EBT","ACH","PAD","Interac"];
+var PM = ["Credit Card","US PIN Debit","EBT","ACH","PAD","Interac","FSA/HSA"];
 var RECS = [
  ["Recommended","Use idempotency keys on every write","Send a unique <code>Idempotency-Key</code> on payments, refunds and funding calls and persist it with the order. Retries after a timeout then return the original result instead of double-charging."],
  ["Recommended","Retry with backoff; never blind-retry declines","Retry only network errors, <code>429</code> and <code>5xx</code> responses, using exponential backoff with jitter. Treat declines (<code>4xx</code> / issuer responses) as final and show the cardholder a clear next step."],
