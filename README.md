@@ -14,3 +14,7 @@ python3 scripts/sync_catalogue.py --check  # list new/removed/renamed operations
 - `catalogue.json` is the generated catalogue, keyed by `METHOD /path`.
 - Grouping is controlled by `TAG_MAP` in the script. A spec tag it doesn't know is reported as **UNMAPPED**; add it to `TAG_MAP`.
 - The Base URL picker only appears in the Transactions group.
+
+## Automated check
+
+`.github/workflows/catalogue-drift.yml` runs `--check` every Monday (and on demand from the Actions tab). On drift it opens, or updates, a single issue labelled `catalogue-drift`, and closes it when the catalogue matches the spec again.
