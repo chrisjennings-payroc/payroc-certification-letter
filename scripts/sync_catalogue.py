@@ -7,7 +7,7 @@
 Display names come from the spec's operation summaries. Grouping lives in TAG_MAP below,
 so a spec tag we have not mapped is reported (and placed under "Other") instead of silently dropped.
 """
-import json, re, sys, urllib.request
+import datetime, json, re, sys, urllib.request
 from pathlib import Path
 
 SPEC_URL = "https://docs.payroc.com/openapi.json"
@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 LETTER = ROOT / "Payroc-Integration-Certification-Letter-Template.html"
 CATALOGUE = ROOT / "catalogue.json"
 START, END = "/*CATALOGUE:START*/", "/*CATALOGUE:END*/"
+DATE_START, DATE_END = "/*CATALOGUE_DATE:START*/", "/*CATALOGUE_DATE:END*/"
 METHODS = ("get", "post", "put", "patch", "delete")
 
 # spec tag -> (letter group, letter sub-group). Order here is display order.
@@ -100,6 +101,8 @@ def keys(cat):
 
 
 def embed(html, cat):
+    html = re.sub(re.escape(DATE_START) + r".*?" + re.escape(DATE_END),
+                  lambda _: DATE_START + cat["generated"] + DATE_END, html, count=1, flags=re.S)
     blob = json.dumps(cat["groups"], separators=(",", ":"), ensure_ascii=False)
     pat = re.compile(re.escape(START) + r".*?" + re.escape(END), re.S)
     return pat.sub(lambda _: f"{START}{blob}{END}", html, count=1)
@@ -124,6 +127,8 @@ def main():
     drift = bool(added or removed or renamed or other)
     if check:
         sys.exit(1 if drift else 0)
+    # keep the date stable when nothing changed, so refreshes don't create noise
+    new["generated"] = old.get("generated") if not drift and old.get("generated") else datetime.date.today().isoformat()
     CATALOGUE.write_text(json.dumps(new, indent=2, ensure_ascii=False) + "\n")
     html = LETTER.read_text()
     if START in html:
