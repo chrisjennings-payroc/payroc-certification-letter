@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cert-letter-template-version" content="1.0.0">
+<title>Integration Certification Letter | Payroc</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#001D4E; --blue:#0051C2; --blue-mid:#0043A3; --teal:#00E0B8; --green:#00A888; --gray:#BFBFBF;
+    --bg:#F6F8FB; --card:#FFFFFF; --ink:#0B1220; --ink-soft:#4B5566; --border:#E2E8F0;
+    --amber:#B45309; --amber-bg:#FFF7ED; --amber-border:#FDE1B5; --info-bg:#EEF4FF; --info-border:#CFE0FF;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg); color:var(--ink); line-height:1.55; font-size:16px;}
+  a{color:var(--blue); text-decoration:none;}
+  p{color:var(--ink-soft); margin:0 0 12px;}
+  h1,h2,h3,h4{color:var(--navy); letter-spacing:-0.01em; font-weight:700;}
+
+  /* Masthead */
+  .masthead{background:linear-gradient(120deg,var(--navy) 0%,var(--blue-mid) 55%,var(--blue) 100%); color:#fff;
+            padding:52px 40px 36px; position:relative; overflow:hidden;}
+  .masthead::after{content:""; position:absolute; right:-80px; top:-80px; width:320px; height:320px;
+            background:radial-gradient(circle,rgba(0,224,184,0.35),transparent 70%);}
+  .masthead-inner{max-width:900px; margin:0 auto; position:relative; z-index:1;}
+  .brand-row{display:flex; align-items:center; gap:12px; margin-bottom:26px; opacity:.92;}
+  .brand-mark{width:30px; height:30px; border-radius:8px; background:var(--teal); display:flex; align-items:center;
+              justify-content:center; font-weight:800; color:var(--navy); font-size:15px;}
+  .brand-row span{font-weight:600; letter-spacing:.02em; font-size:14px; text-transform:uppercase; opacity:.85;}
+  .doc-title{font-size:36px; font-weight:800; margin:0 0 6px; color:#fff;}
+  .doc-subtitle{font-size:17px; opacity:.88; margin:0 0 26px; max-width:640px; color:#fff;}
+  .meta-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; background:rgba(255,255,255,.08);
+             border:1px solid rgba(255,255,255,.18); border-radius:var(--radius); padding:18px 22px;}
+  .meta-label{opacity:.65; text-transform:uppercase; letter-spacing:.04em; font-size:11px; margin-bottom:4px;}
+  .meta-value{font-weight:600; font-size:14px;}
+
+  main{max-width:900px; margin:0 auto; padding:32px 40px 60px;}
+  section{margin-bottom:44px;}
+  .section-tag{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+               color:var(--blue); background:var(--info-bg); padding:4px 10px; border-radius:999px; margin-bottom:10px;}
+  h2{font-size:24px; margin:0 0 14px;}
+  h3{font-size:17px; margin:22px 0 8px;}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:20px 24px; margin-bottom:16px;}
+  .lede{font-size:15.5px; color:var(--ink);}
+
+  /* Status band */
+  .status-band{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:20px 0 8px;}
+  .status{background:var(--card); border:1px solid var(--border); border-left:5px solid var(--green);
+          border-radius:var(--radius); padding:16px 20px; display:flex; align-items:center; gap:14px;}
+  .tick{width:34px; height:34px; border-radius:50%; background:var(--teal); color:var(--navy); font-weight:800;
+        display:flex; align-items:center; justify-content:center; font-size:18px; flex:none;}
+  .status b{display:block; color:var(--navy); font-size:15px;}
+  .status small{color:var(--ink-soft); font-size:12.5px;}
+
+  /* Tables */
+  table{width:100%; border-collapse:collapse; margin:10px 0 18px; font-size:13.5px; background:var(--card);
+        border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;}
+  th,td{text-align:left; padding:10px 14px; border-bottom:1px solid var(--border); vertical-align:top;}
+  th{background:#F0F4FA; color:var(--navy); font-size:12px; text-transform:uppercase; letter-spacing:.03em; font-weight:700;}
+  tr:last-child td{border-bottom:none;}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; background:#EFF3F8; color:var(--blue-mid);
+       padding:2px 6px; border-radius:6px; font-size:12.5px;}
+  .pill{display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; text-transform:uppercase;}
+  .pill-yes{background:#E4F7EF; color:var(--green);}
+  .pill-no{background:#EEF1F5; color:var(--ink-soft);}
+
+  /* Editable fills */
+  .fill{background:var(--amber-bg); border-bottom:2px dashed var(--amber); color:var(--amber); padding:0 4px; border-radius:3px;
+        outline:none; cursor:text;}
+  .fill.filled{background:transparent; border-bottom:1px solid transparent; color:inherit;}
+  .masthead .fill{background:rgba(255,255,255,.12); color:#fff; border-bottom-color:rgba(255,255,255,.6);}
+  .masthead .fill.filled{background:transparent; border-bottom-color:transparent;}
+
+  /* Method catalogue */
+  .group{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:12px; overflow:hidden;}
+  .group > summary{cursor:pointer; padding:12px 18px; font-weight:700; color:var(--navy); list-style:none; display:flex;
+                   justify-content:space-between; align-items:center; background:#F0F4FA;}
+  .group > summary::-webkit-details-marker{display:none;}
+  .group .count{font-size:12px; font-weight:600; color:var(--ink-soft);}
+  .subgroup{padding:10px 18px 4px; border-top:1px solid var(--border);}
+  .subgroup h4{margin:0 0 6px; font-size:13.5px; color:var(--blue-mid);}
+  .toolbar{display:flex; gap:10px; margin:0 0 12px; flex-wrap:wrap;}
+  button{font-family:inherit; font-size:13px; font-weight:600; border-radius:8px; padding:8px 14px; cursor:pointer;
+         border:1px solid var(--blue); background:var(--blue); color:#fff;}
+  button.ghost{background:#fff; color:var(--blue);}
+  .editor-note{background:var(--info-bg); border:1px solid var(--info-border); border-left:4px solid var(--blue);
+               border-radius:var(--radius); padding:14px 20px; font-size:14px; color:#1e3a6e; margin-bottom:24px;}
+  .only-print{display:none;}
+  button.add{background:#fff; color:var(--blue); border:1px dashed var(--blue); padding:5px 12px; font-size:12px; margin:0 0 14px;}
+  button.add:hover{background:var(--info-bg);}
+  .subgroup button.add{margin:0 0 10px;}
+  table.mtable{margin:4px 0 12px; border-radius:8px;}
+  table.mtable th, table.mtable td{padding:6px 12px; font-size:13px;}
+  select.base{font-family:inherit; font-size:12.5px; padding:3px 6px; border:1px solid var(--border); border-radius:6px; background:#fff; color:var(--navy);}
+  .x{border:none; background:#EEF1F5; color:var(--ink-soft); width:20px; height:20px; border-radius:50%; padding:0; font-size:14px; line-height:18px;
+     cursor:pointer; flex:none; font-weight:700;}
+  .x:hover{background:#C0332B; color:#fff;}
+  .rec{position:relative;}
+  .rec .x{position:absolute; top:10px; right:10px;}
+  td.xc{width:34px; text-align:center;}
+  .sig-tabs{display:flex; gap:6px; margin:10px 0 8px;}
+  .sig-tabs button{padding:5px 12px; font-size:12px;}
+  .sig-tabs button.active{background:var(--blue); color:#fff;}
+  .sig-box{border-bottom:1px solid var(--navy); width:240px; height:60px; position:relative; background:#FAFBFD; border-radius:8px 8px 0 0;}
+  .sig-box .typed{font-family:'Dancing Script','Snell Roundhand','Brush Script MT',cursive; font-size:28px; color:var(--navy);
+     position:absolute; left:8px; bottom:4px; white-space:nowrap; outline:none; min-width:140px;}
+  .sig-box canvas{position:absolute; inset:0; width:100%; height:100%; touch-action:none; cursor:crosshair; display:none;}
+  .sig-box img{position:absolute; left:0; bottom:0; max-width:100%; max-height:100%; display:none;}
+  .sig-box.mode-draw canvas{display:block;} .sig-box.mode-draw .typed{display:none;}
+  .sig-box.has-img img{display:block;} .sig-box.has-img canvas{display:none;}
+  .sig-hint{position:absolute; left:12px; top:8px; font-size:11px; color:var(--gray); pointer-events:none;}
+
+  /* Certified-methods summary (print-friendly) */
+  .chips{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 12px;}
+  .chip{font-size:12px; background:var(--info-bg); color:var(--blue-mid); border:1px solid var(--info-border);
+        padding:3px 10px; border-radius:999px;}
+
+  /* Recommendations */
+  .rec-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .rec{background:var(--card); border:1px solid var(--border); border-top:4px solid var(--teal); border-radius:var(--radius); padding:16px 18px;}
+  .rec h4{margin:0 0 6px; font-size:15px;}
+  .rec p{font-size:13.5px; margin:0;}
+  .rec.cond{border-top-color:var(--blue);}
+  .rec select.rtype{font-family:inherit; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:inherit; border:1px solid var(--border); border-radius:6px; padding:1px 4px; background:#fff;}
+  .rec .tagline{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--green); margin-bottom:4px;}
+  .rec.cond .tagline{color:var(--blue);}
+
+  .signature{margin-top:30px;}
+  .sigline{border-top:1px solid var(--navy); width:260px; margin-top:44px; padding-top:6px; color:var(--navy); font-weight:600;}
+  footer{background:var(--navy); color:rgba(255,255,255,.75); text-align:center; font-size:12.5px; padding:22px 20px;}
+
+  @media screen and (max-width:760px){.meta-grid,.status-band,.rec-grid{grid-template-columns:1fr;}}
+  @media print{
+    @page{size:Letter; margin:14mm;}
+    body{background:#fff; font-size:13.5px;}
+    .masthead{background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; padding:30px 28px 22px;}
+    * {-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+    main{padding:20px 4px;}
+    .no-print, .toolbar, .editor-note{display:none !important;}
+    .only-print{display:block;}
+    section, .group, .rec, .card, .status{page-break-inside:avoid;}
+    .fill{background:transparent; border-bottom:none; color:inherit;}
+    .group{border:none; margin-bottom:6px;}
+    .group > summary{background:none; padding:6px 0; border-bottom:2px solid var(--blue);}
+    .group:not([open]) > .subgroup{display:block;}
+    .x, .add, .sig-tabs, .sig-hint{display:none !important;}
+    .sig-box{background:none;}
+    td.xc, th.xc{display:none;}
+    .baseval{display:inline;}
+    .rtext{display:inline !important;}
+    footer{-webkit-print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand-row"><div class="brand-mark">P</div><span>Payroc &middot; Integration Certification</span></div>
+    <h1 class="doc-title">Integration Certification Letter</h1>
+    <p class="doc-subtitle"><span class="fill" contenteditable="true" data-ph="[DBA NAME]">[DBA NAME]</span> has completed integration testing with the Payroc API suite in both UAT and Production.</p>
+    <div class="meta-grid">
+      <div><div class="meta-label">Partner</div><div class="meta-value"><span class="fill" contenteditable="true" data-ph="[DBA NAME]">[DBA NAME]</span></div></div>
+      <div><div class="meta-label">Technical Contact</div><div class="meta-value"><span class="fill" contenteditable="true" data-ph="[Name, Title]">[Name, Title]</span></div></div>
+      <div><div class="meta-label">Certification Date</div><div class="meta-value"><span class="fill" id="certDate" contenteditable="true" data-ph="[Date]">[Date]</span></div></div>
+      <div><div class="meta-label">Reference</div><div class="meta-value"><span class="fill" contenteditable="true" data-ph="[Project / ticket ID]">[Project / ticket ID]</span></div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="editor-note no-print">
+    <strong>How to complete this letter.</strong> Click any amber field to fill it in. Everything starts listed. Click the <strong>&times;</strong> next to any API method, feature, payment method or best practice that was <em>not</em> certified &mdash; the final letter shows only what remains. Empty categories disappear automatically, and whole sections can be removed. Sign at the bottom (type or draw). Use <strong>Undo</strong> to restore the last removal, <strong>Save .html</strong> for an editable copy, or <strong>Print / PDF</strong> to issue.
+    <div class="toolbar" style="margin-top:10px">
+      <button onclick="window.print()">Print / Save as PDF</button>
+      <button class="ghost" onclick="saveHtml()">Save .html</button>
+      <button class="ghost" onclick="undo()">Undo last removal</button>
+    </div>
+  </div>
+
+  <section id="s-intro">
+    <p style="color:var(--ink)">To Whom It May Concern,</p>
+    <p class="lede">We are pleased to confirm that <strong><span class="fill" contenteditable="true" data-ph="[DBA NAME]">[DBA NAME]</span></strong> has successfully completed integration and testing of their application with Payroc's API suite in both the <strong>User Acceptance Testing (UAT)</strong> and <strong>Production</strong> environments. <span class="fill" contenteditable="true" data-ph="[Technical Contact, Title]">[Technical Contact, Title]</span> has demonstrated compliance with Payroc's integration standards, and the application is authorized to use the API methods listed in this letter.</p>
+    <div class="status-band">
+      <div class="status"><div class="tick">&#10003;</div><div><b>UAT testing complete</b><small>Certification script executed and verified</small></div></div>
+      <div class="status"><div class="tick">&#10003;</div><div><b>Production validated</b><small>Live go-live checks passed</small></div></div>
+    </div>
+  </section>
+
+  <section id="s-summary">
+    <span class="section-tag">Integration Summary</span>
+    <h2>What was integrated</h2>
+    <p>The table below summarizes the integration approach. Methods not listed in this letter are not covered by this certification.</p>
+    <table>
+      <tr><th style="width:30%">Item</th><th>Detail</th></tr>
+      <tr><td>Integration approach</td><td>
+        <label><input type="checkbox" class="persist"> REST API</label> &nbsp;
+        <label><input type="checkbox" class="persist"> SDK</label> &nbsp;
+        <label><input type="checkbox" class="persist"> Hosted Fields</label> &nbsp;
+        <label><input type="checkbox" class="persist"> Hosted Pages</label> &nbsp;
+        <label><input type="checkbox" class="persist"> Payroc Cloud</label></td></tr>
+      <tr><td>Base URI(s)</td><td id="baseUris"><code>api.payroc.com</code></td></tr>
+      <tr><td>Integrated API areas</td><td id="areaChips"><span class="chip">&mdash;</span></td></tr>
+      <tr><td>Solution Design</td><td><span class="fill" contenteditable="true" data-ph="[SD document name / version]">[SD document name / version]</span></td></tr>
+      <tr><td>Certification Script</td><td><span class="fill" contenteditable="true" data-ph="[Script name, date completed, # scenarios passed]">[Script name, date completed, # scenarios passed]</span></td></tr>
+    </table>
+  </section>
+
+  <section id="s-methods">
+    <span class="section-tag">Certified API Methods</span>
+    <h2>Certified API methods</h2>
+    <p>Payroc's API suite covers Boarding, Funding, Transactions and Reporting. The methods below were integrated and passed certification.</p>
+    <div id="catalogue"></div>
+  </section>
+
+  <section id="s-vaf">
+    <span class="section-tag">Features &amp; Configuration</span>
+    <h2>Value-added features and terminal configuration</h2>
+    <table id="vafTable">
+      <tr><th>Feature</th><th>Configuration / comment</th><th class="xc"></th></tr>
+    </table>
+    <button class="add no-print" data-add="vaf">+ Add item</button>
+  </section>
+
+  <section id="s-hw">
+    <span class="section-tag">Hardware &amp; Payment Methods</span>
+    <h2>Supported hardware and payment methods</h2>
+    <h3>Supported hardware <span class="pill pill-no">Delete if not applicable</span></h3>
+    <table id="hwTable">
+      <tr><th>Device model</th><th>SDK / firmware version</th><th>Comment</th><th class="xc"></th></tr>
+      <tr><td><span class="fill" contenteditable="true" data-ph="[model]">[model]</span></td><td><span class="fill" contenteditable="true" data-ph="[version]">[version]</span></td><td><span class="fill" contenteditable="true" data-ph="[comment]">[comment]</span></td><td class="xc"><button class="x no-print" title="Remove">&times;</button></td></tr>
+    </table>
+    <button class="add no-print" data-add="hw">+ Add item</button>
+    <h3>Supported payment methods</h3>
+    <table id="pmTable"><tr><th>Payment type</th><th>Comment</th><th class="xc"></th></tr></table>
+    <button class="add no-print" data-add="pm">+ Add item</button>
+  </section>
+
+  <section id="s-flows">
+    <span class="section-tag">Approved Flows</span>
+    <h2>Approved operational flows</h2>
+    <p>The integration adheres to the following flows approved by Payroc. Any change requires prior approval from Payroc's Risk and Legal teams and may require a new certification.</p>
+    <table id="flowTable">
+      <tr><th style="width:28%">Flow</th><th>Approved configuration</th><th class="xc"></th></tr>
+      <tr><td>Merchant boarding</td><td>Approved production Pricing Intent ID(s): <span class="fill" contenteditable="true" data-ph="[ID(s), comma separated]">[ID(s), comma separated]</span></td><td class="xc"><button class="x no-print" title="Remove">&times;</button></td></tr>
+      <tr><td>Funding operations</td><td>Approved ISV funding account: <span class="fill" contenteditable="true" data-ph="[ID]">[ID]</span><br>Funding recipient funding account(s): <span class="fill" contenteditable="true" data-ph="[ID(s)]">[ID(s)]</span></td><td class="xc"><button class="x no-print" title="Remove">&times;</button></td></tr>
+      <tr><td>Payment processing</td><td><span class="fill" contenteditable="true" data-ph="[Any unique payment flows originally approved by Risk &mdash; or delete this row]">[Any unique payment flows originally approved by Risk &mdash; or delete this row]</span></td><td class="xc"><button class="x no-print" title="Remove">&times;</button></td></tr>
+    </table>
+    <button class="add no-print" data-add="flow">+ Add item</button>
+  </section>
+
+  <section id="s-recs">
+    <span class="section-tag">Recommendations</span>
+    <h2>Industry best practices for a healthy integration</h2>
+    <p>Certification confirms the integration works as designed today. The practices below help keep it reliable, secure and supportable in production. Those marked <strong>Recommended</strong> apply to every partner; the remainder depend on the methods integrated.</p>
+    <div class="rec-grid" id="recGrid"></div>
+    <button class="add no-print" data-add="rec" style="margin-top:14px">+ Add item</button>
+  </section>
+
+  <section id="s-compliance">
+    <span class="section-tag">Compliance</span>
+    <h2>Compliance with PCI SSC requirements</h2>
+    <p>As an integrator using Payroc's APIs, <strong><span class="fill" contenteditable="true" data-ph="[DBA NAME]">[DBA NAME]</span></strong> is responsible for maintaining compliance with the Payment Card Industry Security Standards Council (PCI SSC) requirements. Payroc reserves the right to request validation of compliance annually to ensure the continued secure use of our APIs.</p>
+    <p>This certification is contingent upon continued adherence to the approved processes and compliance standards set by Payroc and all third-party governing and regulatory organizations (for example, PCI SSC).</p>
+    <div class="signature">
+      <p style="color:var(--ink)">Sincerely,</p>
+      <div class="sig-tabs no-print"><button class="ghost active" data-m="type">Type</button><button class="ghost" data-m="draw">Draw</button><button class="ghost" id="sigClear">Clear</button></div>
+      <div class="sig-box" id="sigBox">
+        <span class="sig-hint no-print">Type your name, or switch to Draw and sign here</span>
+        <span class="typed" id="sigTyped" contenteditable="true" spellcheck="false"></span>
+        <canvas id="sigCanvas"></canvas>
+        <img id="sigImg" alt="Signature">
+      </div>
+      <p style="margin:6px 0 0; color:var(--navy)"><b><span class="fill" contenteditable="true" data-ph="[Your Name]">[Your Name]</span></b><br><span class="fill" contenteditable="true" data-ph="[Your Title]">[Your Title]</span><br>Payroc Integration Certification Team</p>
+    </div>
+  </section>
+</main>
+
+<footer>Payroc Integration Certification &middot; Confidential &mdash; prepared for the named partner &middot; payroc.com &middot; docs.payroc.com</footer>
+
+<script>
+/* ---------- Data ---------- */
+var CATALOGUE = [
+ {g:"Boarding", sub:[
+  ["Pricing Intents",["Create pricing intent","List pricing intents","Retrieve pricing intent","Update pricing intent","Partially update pricing intent","Delete pricing intent"]],
+  ["Merchant Platforms",["Create merchant platform","Create processing account","List merchant platforms","List merchant platform's processing accounts","Retrieve merchant platform"]],
+  ["Processing Accounts",["Retrieve processing account","List processing account's funding accounts","List contacts","Get processing account pricing agreement","List owners","Create reminder for processing account","List terminal orders","Create terminal order","List processing terminals"]],
+  ["Processing Terminals",["Retrieve processing terminal","Retrieve processing terminal's host processor configuration"]],
+  ["Terminal Orders",["Retrieve terminal order"]],
+  ["Contacts",["Retrieve contact","Update contact","Delete contact"]],
+  ["Owners",["Retrieve owner","Update owner","Delete owner"]]]},
+ {g:"Funding", sub:[
+  ["Funding Accounts",["List funding accounts","Retrieve funding account","Update funding account","Delete funding account"]],
+  ["Funding Activity",["Retrieve funding balance","List funding activity"]],
+  ["Funding Instructions",["Create funding instruction","List funding instructions","Retrieve funding instruction","Update funding instruction","Delete funding instruction"]],
+  ["Funding Recipients",["Create funding recipient","List funding recipients","Retrieve funding recipient","Update funding recipient","Delete funding recipient","List funding recipient's funding accounts","Create funding recipient's funding account","List funding recipient owners","Create funding recipient owner"]]]},
+ {g:"Transactions", sub:[
+  ["Payment Links",["Create payment link","List payment links","Retrieve payment link","Update payment link","Deactivate payment link","List payment link sharing events","Share payment link"]],
+  ["Payments (card)",["Create payment","List payments","Retrieve payment","Adjust payment","Capture payment","Reverse payment","Refund payment"]],
+  ["Unreferenced Refunds (card)",["Create unreferenced refund","List refunds","Retrieve refund","Adjust refund","Reverse refund"]],
+  ["Cards",["Verify card","Balance inquiry (EBT)","Look up BIN information"]],
+  ["Bank Transfer Payments (ACH / PAD)",["Create bank transfer payment","List bank transfer payments","Retrieve bank transfer payment","Reverse bank transfer payment","Refund bank transfer payment","Re-present bank transfer payment"]],
+  ["Bank Transfer Unreferenced Refunds",["Create bank transfer refund","List bank transfer refunds","Retrieve bank transfer refund","Reverse bank transfer refund"]],
+  ["Bank Accounts",["Verify bank account"]],
+  ["Currency Conversion",["FX rates inquiry"]],
+  ["Payment Plans",["Create payment plan","List payment plans","Retrieve payment plan","Update payment plan","Delete payment plan"]],
+  ["Subscriptions",["Create subscription","List subscriptions","Retrieve subscription","Update subscription","Deactivate subscription","Re-activate subscription","Pay manual subscription"]],
+  ["Secure Tokens",["Create secure token","List secure tokens","Retrieve secure token","Update secure token","Update account details","Delete secure token"]],
+  ["Single-Use Tokens",["Create single-use token"]],
+  ["Hosted Fields",["Session token / Hosted Fields (scenario types: see comment)"]],
+  ["Payroc Cloud",["Submit payment instruction","Retrieve payment instruction","Submit refund instruction","Retrieve refund instruction"]]]},
+ {g:"Reporting", sub:[
+  ["Settlement & Authorizations",["List batches","Retrieve batch","List transactions","Retrieve transaction","List authorizations","Retrieve authorization"]],
+  ["Disputes",["List disputes","List dispute statuses"]],
+  ["ACH Deposits",["List ACH deposits","Retrieve ACH deposit","List ACH deposit fees"]],
+  ["Event Subscriptions",["Create event subscription","List event subscriptions","Retrieve event subscription","Update event subscription","Partially update event subscription","Delete event subscription"]]]}
+];
+var VAF = [
+ ["Apple Pay","Direct Apple Pay JS"],["Google Pay","Direct Google Pay JS"],["3D Secure 2.0","Direct via API"],["Account Updater",""],
+ ["Tokenization","Token uniqueness: MID shared / TID shared / No sharing"],
+ ["Subscriptions","Only gateway-managed subscriptions require a terminal configuration"],
+ ["CVV","Mandatory / validated / auto gateway decline"],["AVS","AVS or ZIP only; mandatory / validated / auto gateway decline"],
+ ["Surcharge","RewardPay"],["Dual Pricing","Consumer Choice"],["Service Fee","Percent or amount"],["Enhanced Data","Level II and/or Level III"],
+ ["Dynamic Descriptor",""],["Custom Fields",""],["Taxes","Gateway managed"],["Tips","Gateway prompt, or API / SDK driven"]
+];
+var PM = ["Credit Card","US PIN Debit","EBT","ACH","PAD","Interac"];
+var RECS = [
+ ["Recommended","Use idempotency keys on every write","Send a unique <code>Idempotency-Key</code> on payments, refunds and funding calls and persist it with the order. Retries after a timeout then return the original result instead of double-charging."],
+ ["Recommended","Retry with backoff; never blind-retry declines","Retry only network errors, <code>429</code> and <code>5xx</code> responses, using exponential backoff with jitter. Treat declines (<code>4xx</code> / issuer responses) as final and show the cardholder a clear next step."],
+ ["Recommended","Protect API keys and credentials","Keep keys in a secrets manager, never in source control, client code or logs. Use separate UAT and production keys, rotate on staff changes, and restrict who can read production secrets."],
+ ["Recommended","Keep card data out of your logs","Never log full card numbers, CVV or raw request bodies containing payment details. Log Payroc identifiers (paymentId, secureTokenId, processing terminal ID) and the response status for support and reconciliation."],
+ ["Recommended","Reconcile daily to settlement","Match your orders to Payroc settlement batches and settled transactions each day, and funding activity to bank deposits. Investigate any variance the same day."],
+ ["Recommended","Monitor, alert and keep a support trail","Alert on spikes in declines, <code>401/403</code> and <code>5xx</code> errors. Store the Payroc response identifiers so Support can trace any transaction quickly."],
+ ["Recommended","Re-test before every release","Re-run the affected certification scenarios in UAT before releasing changes to payment, boarding or funding code, and tell Payroc before changing an approved flow."],
+ ["Recommended","Stay current with Payroc","Subscribe to Payroc developer release notes at docs.payroc.com, and keep Hosted Fields / SDK libraries and TLS (1.2 or higher) up to date."],
+ ["If integrated","Verify webhooks and process them safely","Validate the event signature, respond <code>2xx</code> quickly, and process asynchronously. Handle duplicates and out-of-order events, and use a periodic poll as a safety net for missed events."],
+ ["If integrated","Use tokens, not card numbers","Store only the <code>secureTokenId</code>, never the PAN. Use single-use tokens for one-time payments and secure tokens for card-on-file, and send the correct credential-on-file / MIT indicators on recurring charges."],
+ ["If integrated","Strengthen fraud defences","Enforce AVS and CVV rules, use 3D Secure on higher-risk CNP orders, rate-limit checkout and card-testing attempts, and add CAPTCHA or velocity limits to public payment forms."],
+ ["If integrated","Hosted Fields &amp; wallet front-ends","Serve the checkout page over HTTPS with a strict Content-Security-Policy, keep session tokens short-lived and server-generated, and protect against script tampering (PCI DSS 6.4.3 / 11.6.1)."],
+ ["If integrated","Handle bank-transfer returns","Verify bank accounts before the first debit, track ACH / PAD return reason codes, and build a retry-and-notify process for returns. Honor mandate and authorization requirements."],
+ ["If integrated","Card-present operational hygiene","Keep device firmware and apps current, handle cancelled / timed-out instructions by polling before re-submitting, and never resend a sale until the first instruction state is known."],
+ ["If integrated","Monitor disputes","Pull dispute data regularly, alert merchants before response deadlines, and retain order, delivery and customer-communication evidence."],
+ ["If integrated","Plan for funding and boarding changes","Process boarding status events, surface pending / declined states to merchants, and reconcile funding instructions to the merchant's funding balance before releasing funds."]
+];
+
+/* ---------- Build catalogue ---------- */
+var cat = document.getElementById('catalogue');
+CATALOGUE.forEach(function(G){
+  var d = document.createElement('details'); d.className='group'; d.open=true;
+  var html = '<summary><span>'+G.g+'</span><span class="count"></span></summary>';
+  G.sub.forEach(function(S){
+    var hasBase = G.g==='Transactions';
+    html += '<div class="subgroup"><h4>'+S[0]+'</h4><table class="mtable"><tr><th>Method</th>'+(hasBase?'<th class="bh" style="width:150px">Base URL</th>':'')+'<th class="xc"></th></tr>';
+    S[1].forEach(function(m){ html += '<tr class="mrow"><td>'+m+'</td>'+(hasBase?'<td><select class="base no-print"><option>Payroc</option><option>Worldnet</option><option>Both</option></select><span class="only-print baseval">Payroc</span></td>':'')+'<td class="xc"><button class="x no-print" title="Remove (not certified)">&times;</button></td></tr>'; });
+    html += '</table><button class="add no-print" data-add="method">+ Add item</button></div>';
+  });
+  d.innerHTML = html; cat.appendChild(d);
+});
+/* ---------- VAF + payment methods tables ---------- */
+function yn(){ return '<select class="persist-sel no-print"><option>Yes</option><option selected>No</option></select><span class="only-print yn"></span>'; }
+var vt = document.getElementById('vafTable');
+VAF.forEach(function(r){
+  var tr = document.createElement('tr'); tr.className='vaf-row';
+  tr.innerHTML = '<td>'+r[0]+'</td><td><span class="fill" contenteditable="true" data-ph="'+(r[1]||'[comment]')+'">'+(r[1]||'[comment]')+'</span></td><td class="xc"><button class="x no-print" title="Remove (not certified)">&times;</button></td>';
+  vt.appendChild(tr);
+});
+var pt = document.getElementById('pmTable');
+PM.forEach(function(p){
+  var tr = document.createElement('tr'); tr.className='vaf-row';
+  tr.innerHTML = '<td>'+p+'</td><td><span class="fill" contenteditable="true" data-ph="[comment]">[comment]</span></td><td class="xc"><button class="x no-print" title="Remove (not certified)">&times;</button></td>';
+  pt.appendChild(tr);
+});
+/* ---------- Recommendations ---------- */
+var rg = document.getElementById('recGrid');
+RECS.forEach(function(r){
+  var d = document.createElement('div'); d.className='rec'+(r[0]==='Recommended'?'':' cond');
+  d.innerHTML = '<button class="x no-print" title="Remove this recommendation">&times;</button><div class="tagline">'+r[0]+'</div><h4>'+r[1]+'</h4><p>'+r[2]+'</p>';
+  rg.appendChild(d);
+});
+
+/* ---------- Behaviour ---------- */
+var undoStack=[];
+function removeEl(el){
+  var box = el.closest('li,tr,.rec'); if(!box) return;
+  undoStack.push({node:box, parent:box.parentNode, next:box.nextSibling});
+  box.remove(); refresh();
+}
+function undo(){
+  var u=undoStack.pop(); if(!u) return;
+  (u.next&&u.next.parentNode===u.parent) ? u.parent.insertBefore(u.node,u.next) : u.parent.appendChild(u.node);
+  document.querySelectorAll('.subgroup,.group').forEach(function(e){e.style.display='';}); refresh();
+}
+document.addEventListener('change', function(e){
+  if(e.target.matches('select.rtype')){
+    var sel=e.target, card=sel.closest('.rec'), v=sel.value;
+    card.classList.toggle('cond', v!=='Recommended');
+    card.querySelector('.rtext').textContent=v;
+    sel.querySelectorAll('option').forEach(function(o){ o.selected ? o.setAttribute('selected','') : o.removeAttribute('selected'); });
+  }
+});
+document.addEventListener('change', function(e){ if(e.target.matches('select.base')){ e.target.querySelectorAll('option').forEach(function(o){ o.selected ? o.setAttribute('selected','') : o.removeAttribute('selected'); }); refresh(); } });
+document.addEventListener('click', function(e){ var x=e.target.closest('button.x'); if(x) removeEl(x); });
+function refresh(){
+  var areas=[];
+  document.querySelectorAll('.group').forEach(function(g){
+    var total=0;
+    g.querySelectorAll('.subgroup').forEach(function(sg){
+      var n=sg.querySelectorAll('tr.mrow').length; total+=n;
+      sg.style.display = n? '' : 'none';
+      if(n) areas.push(sg.querySelector('h4').textContent+' ('+n+')');
+    });
+    g.style.display = total? '' : 'none';
+    g.querySelector('.count').textContent = total+' certified';
+  });
+  document.getElementById('areaChips').innerHTML = areas.length ? areas.map(function(a){return '<span class="chip">'+a+'</span>';}).join('') : '<span class="chip">&mdash;</span>';
+  var used={};
+  if(document.querySelector('tr.mrow:not(:has(select.base))')) used.Payroc=1;
+  document.querySelectorAll('tr.mrow select.base').forEach(function(sel){
+    var v=sel.value; sel.parentNode.querySelector('.baseval').textContent=v;
+    if(v==='Both'){used.Payroc=used.Worldnet=1;} else used[v]=1;
+  });
+  var uris=[]; if(used.Payroc) uris.push('<code>api.payroc.com</code>'); if(used.Worldnet) uris.push('<code>payments.worldnettps.com/merchant</code>');
+  document.getElementById('baseUris').innerHTML = uris.length ? uris.join(' &nbsp; ') : '&mdash;';
+  ['vafTable','pmTable'].forEach(function(id){
+    var t=document.getElementById(id); if(!t) return;
+    var none = !t.querySelector('tr.vaf-row');
+    t.style.display = none ? 'none' : '';
+    var h=t.previousElementSibling; if(h && h.tagName==='H3') h.style.display = none?'none':'';
+  });
+  var rr=document.querySelectorAll('#recGrid .rec').length;
+  var rs=document.getElementById('s-recs'); if(rs) rs.style.display = rr?'':'none';
+}
+/* ---------- Add item ---------- */
+function F(ph){ return '<span class="fill" contenteditable="true" data-ph="'+ph+'">'+ph+'</span>'; }
+var XB='<td class="xc"><button class="x no-print" title="Remove">&times;</button></td>';
+document.addEventListener('click', function(e){
+  var b=e.target.closest('button.add'); if(!b) return;
+  var k=b.dataset.add, el;
+  if(k==='method'){
+    el=document.createElement('tr'); el.className='mrow';
+    var tbl=b.parentNode.querySelector('table');
+    el.innerHTML='<td>'+F('[Method name]')+'</td>'+(tbl.querySelector('th.bh')?'<td><select class="base no-print"><option>Payroc</option><option>Worldnet</option><option>Both</option></select><span class="only-print baseval">Payroc</span></td>':'')+XB;
+    tbl.appendChild(el);
+  } else if(k==='vaf' || k==='pm'){
+    el=document.createElement('tr'); el.className='vaf-row';
+    el.innerHTML='<td>'+F(k==='vaf'?'[Feature]':'[Payment type]')+'</td><td>'+F('[comment]')+'</td>'+XB;
+    document.getElementById(k==='vaf'?'vafTable':'pmTable').appendChild(el);
+  } else if(k==='hw'){
+    el=document.createElement('tr'); el.innerHTML='<td>'+F('[model]')+'</td><td>'+F('[version]')+'</td><td>'+F('[comment]')+'</td>'+XB;
+    document.getElementById('hwTable').appendChild(el);
+  } else if(k==='flow'){
+    el=document.createElement('tr'); el.innerHTML='<td>'+F('[Flow]')+'</td><td>'+F('[Approved configuration]')+'</td>'+XB;
+    document.getElementById('flowTable').appendChild(el);
+  } else if(k==='rec'){
+    el=document.createElement('div'); el.className='rec';
+    el.innerHTML='<button class="x no-print" title="Remove this recommendation">&times;</button><div class="tagline"><select class="rtype no-print"><option>Recommended</option><option>If integrated</option></select><span class="only-print rtext" style="display:none">Recommended</span></div><h4>'+F('[Title]')+'</h4><p>'+F('[Description]')+'</p>';
+    document.getElementById('recGrid').appendChild(el);
+  }
+  refresh();
+  var first=el.querySelector('.fill'); if(first) first.focus();
+});
+/* Select placeholder text on focus so typing replaces it */
+document.addEventListener('focusin', function(e){
+  var f=e.target.closest && e.target.closest('.fill'); if(!f || f.classList.contains('filled')) return;
+  var r=document.createRange(); r.selectNodeContents(f); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(r);
+});
+/* Editable fills: grey out until edited */
+document.querySelectorAll('.fill').forEach(function(f){ if(!f.dataset.ph) f.dataset.ph=f.textContent; });
+document.addEventListener('input', function(e){
+  var f=e.target.closest && e.target.closest('.fill'); if(!f) return;
+  var txt=f.textContent.trim();
+  f.classList.toggle('filled', txt!=='' && txt!==f.dataset.ph);
+});
+/* Same-named placeholders (e.g. [DBA NAME]) stay in sync */
+document.addEventListener('input', function(e){
+  var f=e.target.closest && e.target.closest('.fill'); if(!f || !f.dataset.ph) return;
+  if(f.dataset.ph==='[DBA NAME]' || f.dataset.ph==='[Technical Contact, Title]'){
+    document.querySelectorAll('.fill').forEach(function(o){
+      if(o!==f && o.dataset.ph===f.dataset.ph){ o.textContent=f.textContent; o.classList.toggle('filled', f.classList.contains('filled')); }
+    });
+  }
+});
+/* Section delete buttons */
+document.querySelectorAll('main section').forEach(function(s){
+  if(s.id==='s-intro') return;
+  var b=document.createElement('button'); b.className='ghost no-print'; b.textContent='× Remove section';
+  b.style.cssText='float:right;padding:3px 10px;font-size:12px'; b.onclick=function(){ if(confirm('Remove this section from the letter?')) s.remove(); };
+  s.insertBefore(b, s.firstChild);
+});
+/* Today's date default */
+(function(){ var d=document.getElementById('certDate'); var t=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  d.textContent=t; d.classList.add('filled'); })();
+
+/* ---------- Signature ---------- */
+(function(){
+  var box=document.getElementById('sigBox'), cv=document.getElementById('sigCanvas'), img=document.getElementById('sigImg'),
+      typed=document.getElementById('sigTyped'), hint=box.querySelector('.sig-hint'), ctx, drawing=false, dirty=false;
+  function setup(){ var r=box.getBoundingClientRect(); cv.width=r.width*2; cv.height=r.height*2; ctx=cv.getContext('2d');
+    ctx.scale(2,2); ctx.lineWidth=2.2; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.strokeStyle='#001D4E'; }
+  function pos(e){ var r=cv.getBoundingClientRect(); return {x:e.clientX-r.left, y:e.clientY-r.top}; }
+  function mode(m){
+    document.querySelectorAll('.sig-tabs button[data-m]').forEach(function(b){b.classList.toggle('active',b.dataset.m===m);});
+    box.classList.toggle('mode-draw',m==='draw'); if(m==='draw'){ box.classList.remove('has-img'); setup(); hint.style.display=''; }
+  }
+  document.querySelectorAll('.sig-tabs button[data-m]').forEach(function(b){ b.onclick=function(){ mode(b.dataset.m); }; });
+  cv.addEventListener('pointerdown',function(e){ drawing=true; dirty=true; cv.setPointerCapture(e.pointerId); var p=pos(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); hint.style.display='none'; });
+  cv.addEventListener('pointermove',function(e){ if(!drawing) return; var p=pos(e); ctx.lineTo(p.x,p.y); ctx.stroke(); });
+  function end(){ if(!drawing) return; drawing=false; if(dirty){ img.src=cv.toDataURL('image/png'); box.classList.add('has-img'); } }
+  cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',end);
+  /* click on saved drawing to redo it */
+  img.addEventListener('click',function(){ mode('draw'); });
+  typed.addEventListener('input',function(){ hint.style.display=typed.textContent.trim()?'none':'';  });
+  document.getElementById('sigClear').onclick=function(){ typed.textContent=''; img.removeAttribute('src'); box.classList.remove('has-img'); dirty=false;
+    if(ctx) ctx.clearRect(0,0,cv.width,cv.height); hint.style.display=''; };
+  if(img.getAttribute('src')) box.classList.add('has-img');
+})();
+
+function saveHtml(){
+  refresh();
+  document.querySelectorAll('input[type=checkbox]').forEach(function(i){ i.checked ? i.setAttribute('checked','') : i.removeAttribute('checked'); });
+  var blob=new Blob(['<!DOCTYPE html>\n'+document.documentElement.outerHTML],{type:'text/html'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='Payroc-Integration-Certification-Letter.html'; a.click();
+}
+refresh();
+</script>
+</body>
+</html>
